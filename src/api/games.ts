@@ -22,17 +22,17 @@ export interface LoadGameResponse {
   categories: Category[];
 }
 
-export const loadGames = createApiCall<
-  void,
-  Game[]
->('GET', '/games');
+// export const loadGames = createApiCall<
+//   void,
+//   Game[]
+// >('GET', '/games');
 
-export const createGame = createApiCall<
-  CreateGameRequest,
-  Game
->('POST', '/games');
+// export const createGame = createApiCall<
+//   CreateGameRequest,
+//   Game
+// >('POST', '/games');
 
-export const loadGame = createApiCall<
-  number,
-  LoadGameResponse
->('GET', (id) => `/games/${id}`);
+// export const loadGame = createApiCall<
+//   number,
+//   LoadGameResponse
+// >('GET', (id) => `/games/${id}`);
