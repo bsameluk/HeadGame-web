@@ -1,23 +1,28 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
-import MainPage from './pages/MainPage';
-import SettingsPage from './pages/SettingsPage';
+// Pages
+import MainPage from './pages/MainPage/MainPage';
+import SettingsPage from './pages/SettingsPage/SettingsPage';
+import CreateGamePage from './pages/CreateGamePage/CreateGamePage';
 
+// Styles
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  return (
-    <Router>
+  return (<BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        {/* <Route path="/game/:id" element={<GamePage />} />
-        <Route path="/create-game" element={<CreateGame />} /> */}
+        <Route index element={<MainPage />} />
+        <Route path="settings" element={<SettingsPage />} />
+
+        <Route path="create-game" >
+          <Route index element={<CreateGamePage />} />
+          <Route path="settings" element={<SettingsPage />} />
+        </Route>
       </Routes>
       <ToastContainer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
