@@ -28,7 +28,8 @@
       "types/*": ["./src/types/*"],
       "components/*": ["./src/components/*"],
       "constants/*": ["./src/constants/*"],
-      "pages/*": ["./src/pages/*"]
+      "pages/*": ["./src/pages/*"],
+      "assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src"]

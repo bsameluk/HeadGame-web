@@ -1,7 +1,6 @@
 import { Plus, Trash } from "lucide-react";
 import { Edit } from "lucide-react"
-import { Team } from "types/main"
-import { getRandomColor } from "constants/colors";
+import { Team } from "@/types/team";
 
 interface TeamProps {
   team: Team
@@ -17,7 +16,7 @@ const TeamItem: React.FC<TeamProps> = ({ team, onEditTeam, onDeleteTeam }) => {
   return (
     <div className="border rounded-box p-4">
       <div className="flex justify-between items-center gap-2 pb-1">
-        <div className="font-bold">{team.name}</div>
+        <div className="font-bold">#{team.teamNumber} {team.name}</div>
 
         <div className="flex items-center gap-2">
           <button
@@ -40,7 +39,7 @@ const TeamItem: React.FC<TeamProps> = ({ team, onEditTeam, onDeleteTeam }) => {
           <div
             key={player.playerNumber}
             className="shrink-0 px-1 py-1 text-xs rounded-[10px]"
-            style={{ backgroundColor: getRandomColor() }}
+            style={{ backgroundColor: player._bgColor }}
           >
             #{player.playerNumber} {player.name}
           </div>
@@ -63,7 +62,7 @@ const AddTeamItem: React.FC<AddTeamItemProps> = ({ onAddTeam }) => {
 
         <button
           className="btn btn-sm btn-circle btn-outline btn-neutral ml-auto w-7 h-7 ml-auto"
-          onClick={onAddTeam}
+          onClick={() => onAddTeam()}
         >
           <Plus className="w-4 h-4" />
         </button>

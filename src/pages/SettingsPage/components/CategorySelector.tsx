@@ -1,16 +1,12 @@
 import { categories } from "@/constants/categories";
-import { RootState } from "@/stores/main";
 import { BarChartHorizontal, Check, X } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleCategory } from "@/stores/gameSlice";
 
-const CategorySelector: React.FC = () => {
-  const dispatch = useDispatch()
-  const selectedCategoryNames = useSelector((state: RootState) => state.game.selectedCategoryNames);
+interface CategorySelectorProps {
+  selectedCategoryNames: string[]
+  onChange: (categoryName: string) => void
+}
 
-  const handleToggleCategory = (categoryName: string) => {
-    dispatch(toggleCategory(categoryName))
-  };
+const CategorySelector: React.FC<CategorySelectorProps> = ({ selectedCategoryNames, onChange }) => {
 
   return (
     <div className="overflow-y-hidden flex flex-col">
@@ -20,7 +16,7 @@ const CategorySelector: React.FC = () => {
           <div
             key={category.name}
             className="flex flex-col items-center gap-2"
-            onClick={() => handleToggleCategory(category.name)}
+            onClick={() => onChange(category.name)}
           >
             <div
               className={`relative cursor-pointer flex flex-col items-center p-3 border rounded-[40px]

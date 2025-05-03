@@ -1,12 +1,20 @@
 import { CircleArrowLeft, Settings } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import TeamSettings from "./components/TeamSettings/TeamSettings";
+import { useDispatch } from "react-redux";
+import * as gameActions from "@/stores/game/gameSlice";
 
 const CreateGamePage: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const handleStartGame = () => {
-    console.log('start game');
+    dispatch(gameActions.startGame())
+    navigate("/game/turn/preview")
+
+    // dispatch(initSelectedWords())
+    // dispatch(initFirstRound({ secondsPerTurn: gameParameters.secondsPerTurn }))
+    // navigate("/game")
   }
 
   return <div className="flex flex-col h-full">

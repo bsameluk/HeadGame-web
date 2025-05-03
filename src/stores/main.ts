@@ -1,13 +1,24 @@
+import { createLogger } from 'redux-logger'
 import { configureStore } from '@reduxjs/toolkit'
-import gameSlice from './gameSlice'
-import teamEditSheetSlice from './teamEditSheetSlice'
+import teamEditSheetSlice from './teamEditSheet/teamEditSheetSlice'
+import gameSlice from './game/gameSlice'
 
+const middleware = (getDefaultMiddleware: any) => {
+  const middlewares = getDefaultMiddleware()
+
+  if (process.env.NODE_ENV === 'development' || true) {
+    middlewares.push(createLogger({ collapsed: true }))
+  }
+
+  return middlewares
+}
 
 export const store = configureStore({
   reducer: {
     game: gameSlice,
     teamEditSheet: teamEditSheetSlice,
   },
+  middleware,
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,36 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { Team } from "types/main";
-import { RootState } from "stores/main";
+import { RootState } from "@/stores/main";
 import Sheet, { SheetHeader } from "components/Sheet";
-import { close, openForNewTeam, openForTeam } from "stores/teamEditSheetSlice";
-import { addTeam, deleteTeam, updateTeam } from "stores/gameSlice";
 import TeamItem, { AddTeamItem } from "./TeamItem";
-import TeamEdit from "../TeamEdit/TeamEdit";
-import { useEffect } from "react";
+import EditTeamComponent from "../EditTeamComponent/EditTeamComponent";
+import { Team } from "@/types/team";
+import * as gameActions from "@/stores/game/gameSlice";
+import * as teamEditSheetActions from "@/stores/teamEditSheet/teamEditSheetSlice";
 
-interface TeamSettingsProps {
-}
-
-const TeamSettings: React.FC<TeamSettingsProps> = () => {
+const TeamSettings: React.FC = () => {
   const dispatch = useDispatch()
 
   // Game State
   const teams = useSelector((state: RootState) => state.game.teams)
 
-  useEffect(() => {
-    console.log(teams)
-  }, [teams])
+  const openEditSheet = (team?: Team) => {
+    if (team) {
+      dispatch(teamEditSheetActions.openForTeam({team}))
+    } else {
+      dispatch(teamEditSheetActions.openForNewTeam())
+    }
+  }
 
-  // Game Actions
-  const handleAddTeam = () => {
-    dispatch(openForNewTeam())
-  }
-  const handleEditTeam = (team: Team) => {
-    dispatch(openForTeam(team))
-  }
-  const handleDeleteTeam = (team: Team) => {
-    dispatch(deleteTeam(team))
+  const onDeleteTeam = (team: Team) => {
+    dispatch(gameActions.removeTeam({teamId: team._id}))
   }
 
   // Team Edit Sheet State
@@ -39,15 +32,20 @@ const TeamSettings: React.FC<TeamSettingsProps> = () => {
 
   // Team Edit Sheet Actions
   const onCloseTeamEdit = () => {
-    dispatch(close())
+    dispatch(teamEditSheetActions.close())
   }
   const onSaveTeamEdit = () => {
-    if (teamEdit._id) {
-      dispatch(updateTeam(teamEdit))
-    } else {
-      dispatch(addTeam(teamEdit))
+    if (!teamEdit) {
+      console.error('TeamSettings: onSaveTeamEdit: teamEdit is null')
+      return
     }
-    dispatch(close())
+
+    if (teamEdit?._id) {
+      dispatch(gameActions.updateTeam({team: teamEdit}))
+    } else {
+      dispatch(gameActions.addTeam({team: teamEdit}))
+    }
+    dispatch(teamEditSheetActions.close())
   }
 
   return (
@@ -59,27 +57,29 @@ const TeamSettings: React.FC<TeamSettingsProps> = () => {
             <TeamItem
               key={team._id}
               team={team}
-              onDeleteTeam={handleDeleteTeam}
-              onEditTeam={handleEditTeam}
+              onDeleteTeam={onDeleteTeam}
+              onEditTeam={openEditSheet}
             />
           ))
         }
-        <AddTeamItem onAddTeam={handleAddTeam} />
+        <AddTeamItem onAddTeam={openEditSheet} />
       </div>
 
-      <Sheet
-        isOpen={isOpenTeamEdit}
-        onClose={onCloseTeamEdit}
-      >
-        <SheetHeader
-          label={teamEdit._id ? teamEdit.name : "Создание"}
+        <Sheet
+          isOpen={isOpenTeamEdit}
           onClose={onCloseTeamEdit}
-        />
-        {teamEdit && <TeamEdit
-          onSave={onSaveTeamEdit}
-          onCancel={onCloseTeamEdit}
-        />}
-      </Sheet>
+          >
+          <SheetHeader
+            label={teamEdit?._id ? teamEdit.name : "Создание"}
+            onClose={onCloseTeamEdit}
+            />
+          {isOpenTeamEdit && teamEdit && (
+            <EditTeamComponent
+              onSave={onSaveTeamEdit}
+              onCancel={onCloseTeamEdit}
+            />
+          )}
+        </Sheet>
     </>
   )
 }

@@ -51,9 +51,10 @@ const Sheet: React.FC<SheetProps> = ({ isOpen, onClose, children, customMinHeigh
           className="w-full h-full absolute top-0 left-0 bg-black/20"
         ></label>
         <div className={`
-          bg-[rgb(248,250,255)] min-h-[${customMinHeight || '200px'}] max-h-[80vh] p-4
+          bg-[rgb(248,250,255)] min-h-[${customMinHeight || '200px'}] max-h-[95vh] p-4
           absolute bottom-0 border-t border-gray-300 rounded-t-[15px] w-full
           transition-transform duration-300 ease-in-out
+          flex flex-col overflow-y-hidden
           ${isOpen ? 'translate-y-0' : 'translate-y-full'}
         `}>
           {children}
@@ -69,13 +70,6 @@ const SheetHeader: React.FC<SheetHeaderProps> = ({ label, onClose }) => {
   return <div className="flex justify-center items-center relative mb-4">
     <h2 className="text-lg font-bold">{label}</h2>
     {onClose && (
-      // <button
-      //   className="btn btn-sm btn-circle btn-ghost absolute right-0"
-      //   onClick={onClose}
-      // >
-      //   <X className="w-5 h-5" />
-      // </button>
-
       <button
         className="btn btn-sm btn-circle btn-ghost absolute right-0 outline-none border-none"
         onClick={onClose}

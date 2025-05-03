@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Player } from "../../../../types/main";
 import { Edit, Plus, Save, Trash } from "lucide-react";
-import { getRandomPlayerName } from "../../../../constants/names";
+import { getRandomPlayerName } from "@/constants/names";
+import { Player } from "@/types/team";
 
 interface PlayerItemProps {
   player: Player
@@ -54,7 +54,7 @@ const PlayerItem: React.FC<PlayerItemProps> = ({ player, onDeletePlayer, onUpdat
             <Edit className="size-[1.2em]" />
           </button>
           <button
-            className="btn btn-square btn-ghost"
+            className="btn btn-square btn-ghost no-animation active:bg-ghost active:text-ghost-content"
             onClick={() => player._id && onDeletePlayer(player)}
           >
             <Trash className="size-[1.2em]" />
@@ -74,11 +74,31 @@ const AddPlayerItem: React.FC<AddPlayerItemProps> = ({ playersCount, onAddPlayer
   }
 
   return (
-    <EditRow
-      defaultName={defaultName}
-      playerNumber={playersCount + 1}
-      onAddPlayer={handleAddPlayer}
-    />
+    <ul className="list rounded-box mb-4">
+      <li className="text-xs px-4 pt-[12px] -mb-[10px] opacity-60 tracking-wide">Добавить игрока:</li>
+      <li className="list-row">
+        <div className="text-xl font-thin opacity-30 tabular-nums flex items-center px-0">
+          #{playersCount + 1}
+        </div>
+        <div className="flex items-center px-0">
+          <input
+            type="text"
+            placeholder="Имя игрока"
+            className="input bg-transparent border-neutral-content"
+            value={defaultName}
+            onChange={(e) => setDefaultName(e.target.value)}
+          />
+        </div>
+        <div className="flex items-center px-0">
+          <button
+            className="btn btn-square btn-ghost"
+            onClick={() => handleAddPlayer(defaultName)}
+          >
+            <Plus className="size-[1.2em]" />
+          </button>
+        </div>
+      </li>
+    </ul>
   )
 }
 
@@ -98,37 +118,30 @@ const EditRow: React.FC<EditRowProps> = ({ _id, defaultName, playerNumber, onAdd
   }
 
   return (
-    <li className="list-row">
-      <div className="text-xl font-thin opacity-30 tabular-nums flex items-center px-0">
-        #{playerNumber}
-      </div>
-      <div className="flex items-center px-0">
-        <input
-          type="text"
-          placeholder="Имя игрока"
-          className="input bg-transparent border-neutral-content"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {/* <label className="input bg-transparent">
-          <span className="label">Имя:</span>
+    <>
+      <li className="list-row">
+        <div className="text-xl font-thin opacity-30 tabular-nums flex items-center px-0">
+          #{playerNumber}
+        </div>
+        <div className="flex items-center px-0">
           <input
             type="text"
-            placeholder=""
+            placeholder="Имя игрока"
+            className="input bg-transparent border-neutral-content"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-        </label> */}
-      </div>
-      <div className="flex items-center px-0">
-        <button
-          className="btn btn-square btn-ghost"
-          onClick={handleAddOrUpdatePlayer}
-        >
-          {_id ? <Save className="size-[1.2em]" /> : <Plus className="size-[1.2em]" />}
-        </button>
-      </div>
-    </li>
+        </div>
+        <div className="flex items-center px-0">
+          <button
+            className="btn btn-square btn-ghost"
+            onClick={handleAddOrUpdatePlayer}
+          >
+            {_id ? <Save className="size-[1.2em]" /> : <Plus className="size-[1.2em]" />}
+          </button>
+        </div>
+      </li>
+    </>
   )
 }
 

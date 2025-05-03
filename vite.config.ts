@@ -6,6 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
+    port: 7000,
     allowedHosts: true
   },
   resolve: {
@@ -15,7 +16,8 @@ export default defineConfig({
       'types': path.resolve(__dirname, './src/types'),
       'components': path.resolve(__dirname, './src/components'),
       'constants': path.resolve(__dirname, './src/constants'),
-      'pages': path.resolve(__dirname, './src/pages')
+      'pages': path.resolve(__dirname, './src/pages'),
+      'assets': path.resolve(__dirname, './src/assets')
     }
   }
 })
