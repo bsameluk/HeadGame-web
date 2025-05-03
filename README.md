@@ -1,5 +1,44 @@
 # React + TypeScript + Vite
 
+## Requirements
+
+- Node.js version 18.x or higher
+- npm or yarn
+
+## Getting Started
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+2. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+3. Open your browser and go to the address shown in the console (usually http://localhost:5173).
+
+## Building for Production
+
+To build the project, run:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+The output will be in the dist folder.
+
+## Additional Information
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
