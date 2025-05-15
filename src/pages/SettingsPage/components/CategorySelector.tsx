@@ -9,9 +9,9 @@ interface CategorySelectorProps {
 const CategorySelector: React.FC<CategorySelectorProps> = ({ selectedCategoryNames, onChange }) => {
 
   return (
-    <div className="overflow-y-hidden flex flex-col">
+    <div className="flex flex-col">
       <h2 className="font-bold pb-2">Выберите категории (выбрано {selectedCategoryNames.length})</h2>
-      <div className="grid grid-cols-3 gap-4 pt-2 overflow-y-auto">
+      <div className="grid grid-cols-3 gap-4 pt-2">
         {categories.map((category) => (
           <div
             key={category.name}

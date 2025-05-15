@@ -60,7 +60,7 @@ const PlayTurn: React.FC = () => {
         <div className="flex flex-col gap-4">
           <h2 className="text-xl">Категория: <span className="">{currentWord.categoryName}</span></h2>
 
-          <h2 className="text-xl font-semibold my-5">
+          <h2 className="text-3xl font-semibold my-5">
             {currentWord.label}
           </h2>
         </div>

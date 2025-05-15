@@ -21,9 +21,9 @@ const MainPage: React.FC = () => {
         </Link>
       </div> */}
 
-      <div className="mb-auto mt-[3vh]">
-        <h1>Добро пожаловать, банда!</h1>
-      </div>
+      <h1 style={{ fontFamily: "Creepster", letterSpacing: "2px", color: "white" }} className="text-4xl mt-10">
+        𝔚𝔢𝔩𝔠𝔬𝔪𝔢, 𝔤𝔞𝔫𝔤𝔰𝔱𝔢𝔯!
+      </h1>
 
       <div className="mb-10">
         <button className="btn p-5 btn btn-primary" onClick={onCreateGame}>Создать игру</button>

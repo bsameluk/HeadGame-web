@@ -42,7 +42,7 @@ const SettingsPage: React.FC = () => {
         <h1>Настройки</h1>
       </div>
 
-      <div className="flex flex-col gap-6 grow-1 overflow-y-hidden">
+      <div className="flex flex-col gap-6 grow-1 overflow-y-auto">
         <TimeSelector
           selectedTime={selectedTime}
           setSelectedTime={handleSetSelectedTime}

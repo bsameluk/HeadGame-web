@@ -1,4 +1,19 @@
+
 import { Category, WordWithCategory } from "@/types/categories";
+
+import { ANIMALS } from "./categories/animals";
+import { CLOTHES } from "./categories/clothes";
+import { EMOTIONS } from "./categories/emotions";
+import { FAMILY_AND_RELATIONS } from "./categories/family_and_relations";
+import { FOOD } from "./categories/food";
+import { GALICIAN_WORDS } from "./categories/galician_words";
+import { MUSIC } from "./categories/music";
+import { NATURE } from "./categories/nature";
+import { PLACES } from "./categories/places";
+import { PROFESSIONS } from "./categories/professions";
+import { TECH } from "./categories/tech";
+import { TRANSPORT } from "./categories/transport";
+import { UKRAINIAN_SONGS } from "./categories/ukrainian_songs";
 
 const GERMANY: Category = {
   name: "Германия",
@@ -637,6 +652,22 @@ export const categories: Category[] = [
   MEMES,
   TIKTOK,
   CARTOONS,
+
+
+  // ------- Generated categories -------
+  ANIMALS,
+  CLOTHES,
+  EMOTIONS,
+  FAMILY_AND_RELATIONS,
+  FOOD,
+  GALICIAN_WORDS,
+  MUSIC,
+  NATURE,
+  PLACES,
+  PROFESSIONS,
+  TECH,
+  TRANSPORT,
+  UKRAINIAN_SONGS,
 ]
 
 export const getAllCategoryNames = () : string[] => {

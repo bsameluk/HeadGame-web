@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { RootState } from "@/stores/main"
@@ -12,9 +12,17 @@ const TurnResultsPage: React.FC = () => {
   const navigate = useNavigate()
   const game = useSelector((state: RootState) => state.game)
   const [isOpenEditSheet, setIsOpenEditSheet] = useState(false)
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
   const currentTeam = game.teams.find(team => team._id === game.currentTurn?._teamId)
   const currentPlayer = currentTeam?.players.find(player => player._id === game.currentTurn?._playerId)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsButtonDisabled(false)
+    }, 5000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const onUpdateWordsHistory = (newWordsHistory: WordHistory[]) => {
     dispatch(gameActions.updateTurnResults({
@@ -65,6 +73,7 @@ const TurnResultsPage: React.FC = () => {
           <button
             className="btn btn-primary btn-outline my-8"
             onClick={onFinishTurn}
+            disabled={isButtonDisabled}
           >
             {isLastTurn ? "Результаты" : "Следующий ход"}
           </button>

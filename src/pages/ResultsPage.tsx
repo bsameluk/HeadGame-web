@@ -48,30 +48,52 @@ const ResultsPage: React.FC = () => {
   return (
     <div className="flex flex-col justify-between h-full text-center">
       <h1 className="text-3xl font-bold my-8">
-        Победила дружба!
+        🏆 Победила дружба!
       </h1>
 
-      <div className="flex flex-col items-center justify-center gap-8 grow">
-        <div className="flex flex-col gap-4">
-          {
-            game.teams.map(team => (
-              <div key={team.teamNumber}>
-                <h2 className="text-xl">Команда: <span className="font-semibold">{team.name}</span></h2>
-                <h2 className="text-xl">Итог: <span className="font-semibold">{scoreByTeams[team._id].totalScore}</span></h2>
-                <hr />
-                <div className="flex flex-col gap-2">
-                  {
-                    scoreByTeams[team._id].scoreByRounds.map(score => (
-                      <div key={score.roundNumber}>{score.roundNumber} раунд: {score.score}</div>
-                    ))
-                  }
-                </div>
-              </div>
-            ))
-          }
+      <div className="flex flex-col items-center justify-center gap-4 grow w-full">
+        <div className="w-full overflow-x-auto">
+          <table className="min-w-max border-collapse w-full text-xs">
+            <thead>
+              <tr>
+                <th className="border px-2 py-1">Команда</th>
+                <th className="border px-2 py-1">1</th>
+                <th className="border px-2 py-1">2</th>
+                <th className="border px-2 py-1">3</th>
+                <th className="border px-2 py-1">Итог</th>
+              </tr>
+            </thead>
+            <tbody>
+              {game.teams.map(team => {
+                const teamScore = scoreByTeams[team._id]
+                const allTotals = game.teams.map(t => scoreByTeams[t._id].totalScore)
+                const maxTotal = Math.max(...allTotals)
+                const minTotal = Math.min(...allTotals)
+                let bgColor = ""
+                if (teamScore.totalScore === maxTotal && maxTotal !== minTotal) {
+                  bgColor = "bg-green-100"
+                } else if (teamScore.totalScore === minTotal && maxTotal !== minTotal) {
+                  bgColor = "bg-red-100"
+                }
+                return (
+                  <tr key={team.teamNumber}>
+                    <td className="border px-2 py-1 font-semibold">{team.name}</td>
+                    {teamScore.scoreByRounds.map(score => (
+                      <td key={score.roundNumber} className="border px-2 py-1">{score.score}</td>
+                    ))}
+                    {Array.from({ length: 3 - teamScore.scoreByRounds.length }).map((_, idx) => (
+                      <td key={`empty-${idx}`} className="border px-2 py-1"></td>
+                    ))}
+                    <td className={`border px-2 py-1 font-bold ${bgColor}`}>{teamScore.totalScore}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
         </div>
-
       </div>
+
+
 
       <div className="flex justify-between">
         <button

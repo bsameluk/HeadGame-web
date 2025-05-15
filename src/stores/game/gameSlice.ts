@@ -14,8 +14,8 @@ const initialState: Game = {
   teams: cloneDeep(defaultTeams),
   status: "not_started",
   settings: {
-    numberOfWords: 5,
-    secondsPerTurn: 10,
+    numberOfWords: 50,
+    secondsPerTurn: 60,
     isPenaltySelected: false,
     selectedCategoryNames: [],
     selectedWords: [],

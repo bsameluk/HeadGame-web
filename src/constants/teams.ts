@@ -5,21 +5,21 @@ import { getRandomColor } from "./colors";
 // Women Players
 const Veronika: Player = {
   _id: 1,
-  name: "Veronika",
+  name: "Безноутбучная",
   score: 0,
   playerNumber: 1,
   _bgColor: getRandomColor(),
 }
 const Iro: Player = {
   _id: 2,
-  name: "Iro",
+  name: "Кастет",
   score: 0,
   playerNumber: 2,
   _bgColor: getRandomColor(),
 }
 const Lera: Player = {
   _id: 3,
-  name: "Lera",
+  name: "Леруа Марлен",
   score: 0,
   playerNumber: 3,
   _bgColor: getRandomColor(),
@@ -28,23 +28,31 @@ const Lera: Player = {
 // Men Players
 const Mykhailo: Player = {
   _id: 4,
-  name: "Mykhailo",
+  name: "Безработный",
   score: 0,
   playerNumber: 1,
   _bgColor: getRandomColor(),
 }
 const Bohdan: Player = {
   _id: 5,
-  name: "Bohdan",
+  name: "Бакбан",
   score: 0,
   playerNumber: 2,
   _bgColor: getRandomColor(),
 }
 const Illya: Player = {
   _id: 6,
-  name: "Illya",
+  name: "Илюха",
   score: 0,
   playerNumber: 3,
+  _bgColor: getRandomColor(),
+}
+
+const Julia: Player = {
+  _id: 7,
+  name: "Жуля",
+  score: 0,
+  playerNumber: 4,
   _bgColor: getRandomColor(),
 }
 
@@ -72,7 +80,7 @@ export const defaultTeams: Team[] = getRandomTeams([
     name: "Вумэн момэнт",
     score: 0,
     teamNumber: 1,
-    players: getRandomPlayers([Veronika, Iro, Lera]),
+    players: getRandomPlayers([Veronika, Iro, Lera, Julia]),
   },
   {
     _id: 2,

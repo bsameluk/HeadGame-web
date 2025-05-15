@@ -47,7 +47,9 @@ const setSelectedCategories = (state: Game, selectedCategoryNames: string[]) => 
 // ------------------ HELPER FUNCTIONS ------------------
 
 const initNewSelectedWords = (selectedCategoryNames: string[], numberOfWords: number) : WordWithCategory[] => {
-  const shuffledWords = shuffle(getAllWords())
+
+  const easyWords = getAllWords().filter((word) => word.level === "easy")
+  const shuffledWords = shuffle(easyWords)
   const filteredWords = shuffledWords.filter((word) => {
     return selectedCategoryNames.includes(word.categoryName)
   })

@@ -76,7 +76,7 @@ interface WordItemProps {
 
 const WordItem: React.FC<WordItemProps> = ({ wordHistory, toggleIsCorrect }) => {
   return (
-    <li className="list-row flex justify-between items-center">
+    <li className={`list-row flex justify-between items-center ${wordHistory.isCorrect ? "bg-green-50" : "bg-red-50"}`}>
       <div className="flex items-center px-0">
         <div>{wordHistory.word.label}</div>
       </div>

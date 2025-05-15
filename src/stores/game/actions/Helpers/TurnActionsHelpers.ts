@@ -14,8 +14,15 @@ const setNextActiveWord = (state: Game) => {
     .filter(({ isCorrect }) => isCorrect)
     .map(({ word }) => word.label) || [];
 
-  const remainingWords = state.currentRound.remainingWords
-    .filter(word => !correctWordLabelsInTurn.includes(word.label))
+  let remainingWords: WordWithCategory[] = []
+
+  if (state.currentRound.remainingWords.length > 1) {
+    remainingWords = state.currentRound.remainingWords
+      .filter(word => !correctWordLabelsInTurn.includes(word.label) && word.label != state.currentTurn?.activeWord?.label)
+  } else {
+    remainingWords = state.currentRound.remainingWords
+      .filter(word => !correctWordLabelsInTurn.includes(word.label))
+  }
 
   state.currentTurn.activeWord = shuffle(remainingWords)[0]
 }
