@@ -35,8 +35,8 @@ const PreviewRoundPage: React.FC = () => {
             <span>Игрок:</span>
             <div
               key={currentPlayer.playerNumber}
-              className="shrink-0 px-1 py-1 text-xl rounded-[10px] ml-2"
-              style={{ backgroundColor: currentPlayer._bgColor, boxShadow: '1px 2px 4px 0 #909090' }}
+              className="shrink-0 px-1 py-1 text-xl rounded-[10px] ml-2 shadow-sm"
+              style={{ backgroundColor: currentPlayer._bgColor }}
             >
               {currentPlayer.name}
             </div>
