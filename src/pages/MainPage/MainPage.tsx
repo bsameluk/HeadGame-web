@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
     <div className="main-page-container flex flex-col justify-between h-[100%] text-center">
       <div className="title-container mt-10">
         <div className="title-line">
-          <h1 className="title text-4xl">Shlyapka</h1>
+          <h1 className="title text-5xl">Shlyapka</h1>
           <img className="hat-icon" src={hatIcon} alt="hat" />
         </div>
       </div>

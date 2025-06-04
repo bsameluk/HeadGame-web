@@ -34,12 +34,12 @@ const TeamItem: React.FC<TeamProps> = ({ team, onEditTeam, onDeleteTeam }) => {
         </div>
       </div>
 
-      <div className="flex items-center gap-1 flex-wrap">
+      <div className="flex items-center gap-2 flex-wrap mt-2">
         {team.players.map((player) => (
           <div
             key={player.playerNumber}
             className="shrink-0 px-1 py-1 text-xs rounded-[10px]"
-            style={{ backgroundColor: player._bgColor }}
+            style={{ backgroundColor: player._bgColor, boxShadow: '1px 2px 4px 0 #909090' }}
           >
             #{player.playerNumber} {player.name}
           </div>

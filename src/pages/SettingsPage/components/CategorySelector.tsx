@@ -15,19 +15,19 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({ selectedCategoryNam
         {categories.map((category) => (
           <div
             key={category.name}
-            className="flex flex-col items-center gap-2"
+            style={{transition: 'opacity 0.1s ease'}}
+            className={`flex flex-col items-center gap-2 ${selectedCategoryNames.includes(category.name) ? 'opacity-100' : 'opacity-30'}`}
             onClick={() => onChange(category.name)}
           >
             <div
-              className={`relative cursor-pointer flex flex-col items-center p-3 border rounded-[40px]
-                ${selectedCategoryNames.includes(category.name) ? 'opacity-100' : 'opacity-20'}`}
+              className={`relative cursor-pointer flex flex-col items-center p-3 border rounded-[40px]`}
             >
-              <span className="absolute -top-2 -right-2 rounded-full w-5 h-5 flex items-center justify-center bg-white border">
-                {selectedCategoryNames.includes(category.name)
-                  ? <Check className="w-4 h-4 text-green-500" />
-                  : <X className="w-4 h-4 text-red-500" />
-                }
-              </span>
+              {
+                selectedCategoryNames.includes(category.name) &&
+                <span className="absolute -top-1 -right-1 rounded-full w-4 h-4 flex items-center justify-center bg-white border">
+                  <Check className="w-3 h-3 text-green-500" />
+                </span>
+              }
               <BarChartHorizontal className="w-4 h-4" />
             </div>
             <span className="text-[14px] text-center">{category.name}</span>

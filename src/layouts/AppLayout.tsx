@@ -22,31 +22,26 @@ const AppLayout: React.FC = ({ children }: { children?: React.ReactNode }) => {
     }
   }, [location.pathname]);
 
-  const mainPageStyles = {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    color: 'white',
-  }
-
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full" style={{backgroundColor: '#f4f4f4'}}>
       {/* Фоновый слой с blur и overlay */}
-      {!isMainPage && (
+      {/* {!isMainPage && (
         <div
           className="absolute top-0 left-0 w-full h-full z-7"
           style={{
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)', // для Safari
-            background: 'rgba(255,255,255,0.7)', // для overlay
+            background: '#f4f4f4', // для overlay
             pointerEvents: 'none',
           }}
         />
-      )}
-      <div className="absolute top-0 left-0 w-full h-full z-5">
-        {videoSceneStage && <VideoScene stage={videoSceneStage} />}
-      </div>
+      )} */}
+      {
+        isMainPage &&
+        <div className="absolute top-0 left-0 w-full h-full z-5">
+          {videoSceneStage && <VideoScene stage={videoSceneStage} />}
+        </div>
+      }
       <div className="relative z-10 h-full w-full">
         {children ?? <Outlet />}
       </div>

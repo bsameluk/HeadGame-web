@@ -20,7 +20,7 @@ const TurnResultsPage: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsButtonDisabled(false)
-    }, 5000)
+    }, 1000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -46,7 +46,7 @@ const TurnResultsPage: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between h-full text-center">
+      <div className="flex flex-col justify-between h-full text-center p-[1rem]">
         <h1 className="text-3xl font-bold my-8">
           Слов осталось: {game.currentRound?.remainingWords?.length || 0}
         </h1>

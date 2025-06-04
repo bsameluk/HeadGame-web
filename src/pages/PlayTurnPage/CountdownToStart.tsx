@@ -30,9 +30,10 @@ const CountdownToStart: React.FC<CountdownToStartProps> = ({ onCountdownEnd }) =
   return (
     <div className="flex items-center justify-center h-full w-full text-center">
       <div
-        style={{ backgroundColor: currentColor }}
+        style={{ backgroundColor: currentColor, height: `${countdown*320}px`, width: `${countdown*320}px` }}
         className={`
-          rounded-full h-[300px] w-[300px]
+          absolute
+          rounded-full
           flex items-center justify-center
           transition-all duration-300
         `}

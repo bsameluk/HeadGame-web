@@ -22,7 +22,7 @@ const PreviewRoundPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col justify-between h-full text-center">
+    <div className="flex flex-col justify-between h-full text-center p-[1rem]">
       <h1 className="text-3xl font-bold my-8">
         Раунд {game.currentRound.roundNumber}
       </h1>
@@ -30,7 +30,17 @@ const PreviewRoundPage: React.FC = () => {
       <div className="flex flex-col items-center justify-center gap-8 grow">
         <div className="flex flex-col gap-4">
           <h2 className="text-xl">Команда: <span className="font-semibold">{currentTeam.name}</span></h2>
-          <h2 className="text-xl">Игрок: <span className="font-semibold">{currentPlayer.name}</span></h2>
+          <h2 className="text-xl flex justify-center items-center">
+            {/* Игрок: <span className="font-semibold">{currentPlayer.name}</span> */}
+            <span>Игрок:</span>
+            <div
+              key={currentPlayer.playerNumber}
+              className="shrink-0 px-1 py-1 text-xl rounded-[10px] ml-2"
+              style={{ backgroundColor: currentPlayer._bgColor, boxShadow: '1px 2px 4px 0 #909090' }}
+            >
+              {currentPlayer.name}
+            </div>
+          </h2>
           <h2 className="text-xl">Время: <span className="font-semibold">{game.currentTurn.remainingSeconds} сек</span></h2>
         </div>
 

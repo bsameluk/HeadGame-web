@@ -7,6 +7,7 @@
     background-color: white;
     color: #3d3d3d;
     overflow: hidden;
+    font-family: "Russo One", sans-serif;
   }
 
   * {
@@ -24,7 +25,7 @@
 
   a {
     font-weight: 500;
-    color: #646cff;
+    color: #E1F5FE;
     text-decoration: inherit;
   }
 
