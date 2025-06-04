@@ -64,14 +64,14 @@ const TurnResultsPage: React.FC = () => {
 
         <div className="flex justify-between">
           <button
-            className="btn btn-neutral btn-outline my-8"
+            className="btn btn-neutral btn-outline my-8 w-37 h-13"
             onClick={() => setIsOpenEditSheet(true)}
           >
             Список слов
           </button>
 
           <button
-            className="btn btn-primary btn-outline my-8"
+            className="btn btn-primary btn-outline my-8 w-37 h-13"
             onClick={onFinishTurn}
             disabled={isButtonDisabled}
           >

@@ -23,7 +23,7 @@ const MainPage: React.FC = () => {
       </div>
 
       <div className="mb-10">
-        <button className="btn p-5 btn btn-primary" onClick={onCreateGame}>Создать игру</button>
+        <button className="btn p-5 btn btn-lg btn-primary" onClick={onCreateGame}>Создать игру</button>
       </div>
     </div>
   )

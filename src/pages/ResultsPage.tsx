@@ -97,7 +97,7 @@ const ResultsPage: React.FC = () => {
 
       <div className="flex justify-center">
         <button
-          className="btn btn-neutral btn-outline my-8"
+          className="btn btn-lg btn-neutral btn-outline my-8"
           onClick={() => navigate("/")}
         >
           На главную
