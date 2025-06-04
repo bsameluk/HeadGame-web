@@ -29,6 +29,7 @@ const SettingsPage: React.FC = () => {
   }
 
   const handleToggleCategory = (categoryName: string) => {
+    if (selectedCategoryNames.length < 2 && selectedCategoryNames.includes(categoryName)) return
     dispatch(toggleCategory({ categoryName }))
   };
 
