@@ -47,7 +47,7 @@ const AppLayout: React.FC = ({ children }: { children?: React.ReactNode }) => {
       <div className="absolute top-0 left-0 w-full h-full z-5">
         {videoSceneStage && <VideoScene stage={videoSceneStage} />}
       </div>
-      <div className="relative z-10 h-full w-full p-[1rem]">
+      <div className="relative z-10 h-full w-full">
         {children ?? <Outlet />}
       </div>
     </div>

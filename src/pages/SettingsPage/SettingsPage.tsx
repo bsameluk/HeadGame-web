@@ -39,7 +39,7 @@ const SettingsPage: React.FC = () => {
           className="w-6 h-6 text-black absolute left-0 top-0"
           onClick={() => navigate(-1)}
         />
-        <h1>Настройки</h1>
+        <h1>Настройки игры</h1>
       </div>
 
       <div className="flex flex-col gap-6 grow-1 overflow-y-auto">
