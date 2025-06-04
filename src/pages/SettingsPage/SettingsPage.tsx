@@ -53,12 +53,12 @@ const SettingsPage: React.FC = () => {
           onChange={handleSetWordsCount}
         />
 
-        <TogglePreference
+        {/* <TogglePreference
           title="Штраф"
           description="За пропуск слова -1 балл"
           checked={isPenaltySelected}
           onChange={handleSetIsPenaltySelected}
-        />
+        /> */}
         <CategorySelector
           selectedCategoryNames={selectedCategoryNames}
           onChange={handleToggleCategory}

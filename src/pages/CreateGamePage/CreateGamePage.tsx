@@ -33,7 +33,7 @@ const CreateGamePage: React.FC = () => {
 
     <div className="flex justify-center relative items-center pt-3 border-t border-gray-200 box-content">
       <button
-        className="btn btn-primary btn-outline"
+        className="btn btn-primary"
         onClick={handleStartGame}
       >
         Начать игру

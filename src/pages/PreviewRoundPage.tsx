@@ -48,7 +48,7 @@ const PreviewRoundPage: React.FC = () => {
 
       <div className="">
         <button
-          className="btn btn-primary btn-outline w-full my-8"
+          className="btn btn-lg btn-primary w-full my-8"
           onClick={() => navigate("/game/turn/play")}
         >
           Начать

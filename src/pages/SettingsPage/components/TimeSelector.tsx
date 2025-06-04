@@ -41,7 +41,7 @@ const TimeSelectorItem: React.FC<TimeSelectorItemProps> = ({ value, isSelected, 
       : <Clock9 className="w-6 h-6 text-gray" />;
 
   return <div
-    style={{transition: 'opacity 0.1s ease'}}
+    style={{transition: 'opacity 0.2s ease'}}
     className={`flex flex-col items-center gap-1 relative ${isSelected ? 'opacity-100' : 'opacity-30'}`}
     onClick={() => onSelect(value)}
   >

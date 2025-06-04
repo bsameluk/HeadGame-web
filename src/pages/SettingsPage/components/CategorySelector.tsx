@@ -15,7 +15,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({ selectedCategoryNam
         {categories.map((category) => (
           <div
             key={category.name}
-            style={{transition: 'opacity 0.1s ease'}}
+            style={{transition: 'opacity 0.2s ease'}}
             className={`flex flex-col items-center gap-2 ${selectedCategoryNames.includes(category.name) ? 'opacity-100' : 'opacity-30'}`}
             onClick={() => onChange(category.name)}
           >

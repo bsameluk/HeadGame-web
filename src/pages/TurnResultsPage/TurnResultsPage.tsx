@@ -20,7 +20,7 @@ const TurnResultsPage: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsButtonDisabled(false)
-    }, 1000)
+    }, 2000)
     return () => clearTimeout(timer)
   }, [])
 

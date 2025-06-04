@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const COLORS_DICS = {
   1: "rgb(106 216 135)",
-  2: "rgb(121 106 216)",
+  2: "#FFC9A6",
   3: "rgb(229 150 155)"
 }
 

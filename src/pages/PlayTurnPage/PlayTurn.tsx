@@ -69,14 +69,14 @@ const PlayTurn: React.FC = () => {
 
       <div className="flex justify-between">
         <button
-          className="btn btn-neutral btn-outline my-8"
+          className="btn btn-active my-8"
           onClick={() => dispatch(gameActions.skipWord())}
         >
           Пропустить
         </button>
 
         <button
-          className="btn btn-primary btn-outline my-8"
+          className="btn btn-success my-8"
           onClick={() => dispatch(gameActions.submitWord())}
         >
           Правильно!
