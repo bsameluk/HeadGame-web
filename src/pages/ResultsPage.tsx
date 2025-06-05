@@ -1,7 +1,7 @@
 import { RootState } from "@/stores/main"
 import { Round } from "@/types/game"
 import { Team } from "@/types/team"
-import { chain } from "lodash"
+import { chain, maxBy, toPairs } from "lodash"
 import { useMemo } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -45,10 +45,16 @@ const ResultsPage: React.FC = () => {
     }, {} as Record<number, TeamWithScore>)
   }, [game.rounds])
 
+  const winnerTeam = useMemo(() => {
+    return maxBy(game.teams, team => {
+      return scoreByTeams[team._id].totalScore
+    })
+  }, [])
+
   return (
     <div className="flex flex-col justify-between h-full text-center">
       <h1 className="text-3xl font-bold my-8">
-        🏆 Победила дружба!
+        🏆 Победили {winnerTeam?.name}!
       </h1>
 
       <div className="flex flex-col items-center justify-center gap-4 grow w-full">
