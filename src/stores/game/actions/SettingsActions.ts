@@ -2,7 +2,7 @@ import { getAllWords } from "@/constants/categories";
 import { WordWithCategory } from "@/types/categories";
 import { Game } from "@/types/game";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { shuffle, xor } from "lodash";
+import { shuffle, xor, uniqBy } from "lodash";
 
 // ------------------ SET SECONDS PER TURN ------------------
 interface SetSecondsPerTurnPayload {
@@ -49,7 +49,7 @@ const setSelectedCategories = (state: Game, selectedCategoryNames: string[]) => 
 const initNewSelectedWords = (selectedCategoryNames: string[], numberOfWords: number) : WordWithCategory[] => {
 
   const easyWords = getAllWords().filter((word) => word.level === "easy")
-  const shuffledWords = shuffle(easyWords)
+  const shuffledWords = uniqBy(shuffle(easyWords), (w) => w.label)
   const filteredWords = shuffledWords.filter((word) => {
     return selectedCategoryNames.includes(word.categoryName)
   })
