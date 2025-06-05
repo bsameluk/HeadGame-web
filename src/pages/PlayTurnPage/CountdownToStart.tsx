@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const COLORS_DICS = {
   1: "rgb(106 216 135)",
-  2: "rgb(121 106 216)",
+  2: "#FFC9A6",
   3: "rgb(229 150 155)"
 }
 
@@ -30,9 +30,10 @@ const CountdownToStart: React.FC<CountdownToStartProps> = ({ onCountdownEnd }) =
   return (
     <div className="flex items-center justify-center h-full w-full text-center">
       <div
-        style={{ backgroundColor: currentColor }}
+        style={{ backgroundColor: currentColor, height: `${countdown*320}px`, width: `${countdown*320}px` }}
         className={`
-          rounded-full h-[300px] w-[300px]
+          absolute
+          rounded-full
           flex items-center justify-center
           transition-all duration-300
         `}

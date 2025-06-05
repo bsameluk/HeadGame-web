@@ -10,34 +10,12 @@ interface EditWordListSheetProps {
 }
 
 const EditWordListSheet: React.FC<EditWordListSheetProps> = ({ isOpen, onClose, wordsHistory, onSave }) => {
-  return (
-    <Sheet
-      isOpen={isOpen}
-      onClose={onClose}
-    >
-      <SheetHeader
-        label={"Список слов"}
-        onClose={onClose}
-      />
-      <WordList
-        wordsHistory={wordsHistory}
-        onSave={onSave}
-        onCancel={onClose}
-      />
-    </Sheet>
-  )
-}
-
-// ----------------------- HELPER COMPONENTS -------------------------
-
-interface WordListProps {
-  wordsHistory: WordHistory[]
-  onSave: (wordsHistory: WordHistory[]) => void
-  onCancel: () => void
-}
-
-const WordList: React.FC<WordListProps> = ({ wordsHistory, onSave, onCancel }) => {
   const [editedWordHistory, setEditedWordHistory] = useState<WordHistory[]>(wordsHistory)
+
+  const handleOnCancel = () => {
+    onClose()
+    setEditedWordHistory(wordsHistory)
+  }
 
   const handleOnSave = () => {
     onSave(editedWordHistory)
@@ -50,8 +28,42 @@ const WordList: React.FC<WordListProps> = ({ wordsHistory, onSave, onCancel }) =
   }
 
   return (
+    <Sheet
+      isOpen={isOpen}
+      onClose={handleOnCancel}
+    >
+      <SheetHeader
+        label={"Список слов"}
+        onClose={handleOnCancel}
+      />
+      <WordList
+        editedWordHistory={editedWordHistory}
+        handleToggleIsCorrect={handleToggleIsCorrect}
+        onSave={handleOnSave}
+        onCancel={handleOnCancel}
+      />
+    </Sheet>
+  )
+}
+
+// ----------------------- HELPER COMPONENTS -------------------------
+
+interface WordListProps {
+  editedWordHistory: WordHistory[]
+  onSave: (wordsHistory: WordHistory[]) => void
+  handleToggleIsCorrect: (wordsHistory: WordHistory) => void
+  onCancel: () => void
+}
+
+const WordList: React.FC<WordListProps> = ({ editedWordHistory, onSave, handleToggleIsCorrect, onCancel }) => {
+
+  const handleOnSave = () => {
+    onSave(editedWordHistory)
+  }
+
+  return (
     <>
-      <ul className="list rounded-box shadow-md mb-4 overflow-y-auto max-h-[50vh]">
+      <ul className="list rounded-box shadow-md mb-4 overflow-y-auto max-h-[65vh]">
         {editedWordHistory.map((wordHistory) => (
           <WordItem
             key={wordHistory.word.label}
@@ -76,11 +88,11 @@ interface WordItemProps {
 
 const WordItem: React.FC<WordItemProps> = ({ wordHistory, toggleIsCorrect }) => {
   return (
-    <li className={`list-row flex justify-between items-center ${wordHistory.isCorrect ? "bg-green-50" : "bg-red-50"}`}>
-      <div className="flex items-center px-0">
+    <li className={`list-row flex justify-between items-center ${wordHistory.isCorrect ? "bg-green-100" : "bg-gray-100"}`}>
+      <div>
         <div>{wordHistory.word.label}</div>
       </div>
-      <div className="flex items-center px-0 gap-2">
+      <div>
         <input
           type="checkbox"
           className="toggle toggle-neutral"

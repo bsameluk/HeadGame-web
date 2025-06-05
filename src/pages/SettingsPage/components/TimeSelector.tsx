@@ -41,17 +41,16 @@ const TimeSelectorItem: React.FC<TimeSelectorItemProps> = ({ value, isSelected, 
       : <Clock9 className="w-6 h-6 text-gray" />;
 
   return <div
-    className={`flex flex-col items-center gap-1 relative ${isSelected ? 'opacity-100' : 'opacity-20'}`}
+    style={{transition: 'opacity 0.2s ease'}}
+    className={`flex flex-col items-center gap-1 relative ${isSelected ? 'opacity-100' : 'opacity-30'}`}
     onClick={() => onSelect(value)}
   >
-    <span
-      className={`absolute -top-[18%] right-[5%] rounded-full  border-gray w-4 h-4 flex items-center justify-center bg-white border`}
-    >
-      {isSelected ?
-        <Check className="w-4 h-4 text-green-500" />
-        : <X className="w-4 h-4 text-red-500" />
-      }
-    </span>
+    {
+      isSelected &&
+      <span className={`absolute -top-[13%] right-[8%] rounded-full w-4 h-4 flex items-center justify-center bg-white border`}>
+        <Check className="w-3 h-3 text-green-500" />
+      </span>
+    }
     {timeIcon}
     <p className="text-sm text-gray font-bold">{value} сек</p>
   </div>;

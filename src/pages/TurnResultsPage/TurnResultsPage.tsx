@@ -20,7 +20,7 @@ const TurnResultsPage: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsButtonDisabled(false)
-    }, 5000)
+    }, 2000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -46,7 +46,7 @@ const TurnResultsPage: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between h-full text-center">
+      <div className="flex flex-col justify-between h-full text-center p-[1rem]">
         <h1 className="text-3xl font-bold my-8">
           Слов осталось: {game.currentRound?.remainingWords?.length || 0}
         </h1>
@@ -64,14 +64,14 @@ const TurnResultsPage: React.FC = () => {
 
         <div className="flex justify-between">
           <button
-            className="btn btn-neutral btn-outline my-8"
+            className="btn btn-neutral btn-outline my-8 w-37 h-13"
             onClick={() => setIsOpenEditSheet(true)}
           >
             Список слов
           </button>
 
           <button
-            className="btn btn-primary btn-outline my-8"
+            className="btn btn-primary btn-outline my-8 w-37 h-13"
             onClick={onFinishTurn}
             disabled={isButtonDisabled}
           >

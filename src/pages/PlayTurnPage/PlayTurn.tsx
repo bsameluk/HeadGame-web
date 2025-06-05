@@ -42,7 +42,7 @@ const PlayTurn: React.FC = () => {
   }, [currentWord])
 
   return currentWord && (
-    <div className="flex flex-col justify-between h-full text-center">
+    <div className="flex flex-col justify-between h-full text-center p-[1rem]">
       <h1 className="text-3xl font-bold my-8">
         Отсчет начался!
       </h1>
@@ -58,7 +58,7 @@ const PlayTurn: React.FC = () => {
 
       <div className="flex flex-col items-center justify-center gap-8 grow">
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl">Категория: <span className="">{currentWord.categoryName}</span></h2>
+          <h2 className="text-md">Категория: <span className="">{currentWord.categoryName}</span></h2>
 
           <h2 className="text-3xl font-semibold my-5">
             {currentWord.label}
@@ -69,14 +69,14 @@ const PlayTurn: React.FC = () => {
 
       <div className="flex justify-between">
         <button
-          className="btn btn-neutral btn-outline my-8"
+          className="btn btn-active my-8 w-37 h-13"
           onClick={() => dispatch(gameActions.skipWord())}
         >
           Пропустить
         </button>
 
         <button
-          className="btn btn-primary btn-outline my-8"
+          className="btn btn-success my-8 w-37 h-13"
           onClick={() => dispatch(gameActions.submitWord())}
         >
           Правильно!

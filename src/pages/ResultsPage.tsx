@@ -46,7 +46,7 @@ const ResultsPage: React.FC = () => {
   }, [game.rounds])
 
   return (
-    <div className="flex flex-col justify-between h-full text-center">
+    <div className="flex flex-col justify-between h-full text-center p-[1rem]">
       <h1 className="text-3xl font-bold my-8">
         🏆 Победила дружба!
       </h1>
@@ -95,9 +95,9 @@ const ResultsPage: React.FC = () => {
 
 
 
-      <div className="flex justify-between">
+      <div className="flex justify-center">
         <button
-          className="btn btn-neutral btn-outline my-8"
+          className="btn btn-lg btn-neutral btn-outline my-8"
           onClick={() => navigate("/")}
         >
           На главную

@@ -17,13 +17,13 @@ const CreateGamePage: React.FC = () => {
     // navigate("/game")
   }
 
-  return <div className="flex flex-col h-full">
+  return <div className="flex flex-col h-full p-[1rem]">
     <div className="flex justify-center relative items-center min-h-[24px] pb-3 border-b border-gray-200 box-content">
       <CircleArrowLeft
         className="w-6 h-6 text-black absolute left-0 top-0"
         onClick={() => navigate(-1)}
       />
-      <h1>Параметры</h1>
+      <h1>Создание команд</h1>
       <Link to="/create-game/settings">
         <Settings className="w-6 h-6 text-black absolute right-0 top-0" />
       </Link>
@@ -33,7 +33,7 @@ const CreateGamePage: React.FC = () => {
 
     <div className="flex justify-center relative items-center pt-3 border-t border-gray-200 box-content">
       <button
-        className="btn btn-primary btn-outline"
+        className="btn btn-lg btn-primary"
         onClick={handleStartGame}
       >
         Начать игру
