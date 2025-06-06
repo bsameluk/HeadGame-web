@@ -3,7 +3,7 @@ import './index.css'
 import App from './App.tsx'
 
 // Redux
-import { store } from './stores/main'
+import { store } from './stores/main.ts'
 import { Provider } from 'react-redux'
 
 createRoot(document.getElementById('root')!).render(

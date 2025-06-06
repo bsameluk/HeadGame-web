@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // local imports
-import { RootState } from "stores/main";
+import { RootState } from "@/stores/main";
 import PlayerItem from "./PlayerItem";
 import { AddPlayerItem } from "./PlayerItem";
 import * as teamEditSheetActions from "@/stores/teamEditSheet/teamEditSheetSlice";

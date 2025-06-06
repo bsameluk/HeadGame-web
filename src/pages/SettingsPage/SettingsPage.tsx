@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CircleArrowLeft } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { RootState } from "stores/main";
+import { RootState } from "@/stores/main";
 import { toggleCategory, setNumberOfWords, setSecondsPerTurn, setIsPenaltySelected } from "@/stores/game/gameSlice";
 import TimeSelector from "./components/TimeSelector";
 import TogglePreference from "./components/TogglePreference";
